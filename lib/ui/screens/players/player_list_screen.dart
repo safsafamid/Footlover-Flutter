@@ -50,6 +50,9 @@ class _PlayerGoalScreenState extends State<PlayerListScreen> {
                           MaterialPageRoute(
                             builder: (_) => PlayerDetailScreen(
                               id:  _playersModel![index].id,
+                              teamId:  _playersModel![index].teamId,
+                              leagueId:  _playersModel![index].teamId, 
+                              countryId:  _playersModel![index].countryId, 
                             ),
                           ),
                         );
