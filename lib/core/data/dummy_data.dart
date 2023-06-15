@@ -70,7 +70,7 @@ List<ServiceData> services() {
     ),
     ServiceData(
       name: 'Players',
-      icon: 'assets/icons/club.png',
+      icon: 'assets/icons/team.png',
       link: '/players',
     ),
     ServiceData(

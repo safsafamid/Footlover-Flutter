@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:soccerapp/core/api/api.dart';
 import 'package:soccerapp/core/models/data/player_model.dart';
-import 'package:soccerapp/ui/screens/players/player_detail_screen.dart';
 import 'package:soccerapp/ui/theme/app_theme.dart';
 import 'package:http/http.dart' as http;
 

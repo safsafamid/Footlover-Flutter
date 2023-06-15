@@ -13,13 +13,13 @@ class PlayerScreen extends StatelessWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             const SliverAppBar(
-              title: Text('Statistics'),
+              title: Text('Players'),
               pinned: true,
               floating: true,
               bottom: TabBar(
                 isScrollable: true,
                 tabs: [
-                  Tab(child: Text('Players')),
+                  Tab(child: Text('List')),
                   Tab(child: Text('Goals')),
                 ],
               ),

@@ -9,13 +9,13 @@ class PlayerDetailScreen extends StatefulWidget {
   final int leagueId;
   final int countryId;
 
-  const PlayerDetailScreen(
-      {super.key,
-      required this.id,
-      required this.teamId,
-      required this.leagueId,
-      required this.countryId,
-      });
+  const PlayerDetailScreen({
+    super.key,
+    required this.id,
+    required this.teamId,
+    required this.leagueId,
+    required this.countryId,
+  });
 
   @override
   State<PlayerDetailScreen> createState() => _PlayerDetailScreenState();
@@ -77,219 +77,220 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen> {
                 ),
               )
             : RefreshIndicator(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow: null,
-                  ),
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            height: 59,
-                            width: 59,
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Colors.blueAccent,
-                              // image: DecorationImage(
-                              //   image: NetworkImage("assets/images/safsaf.png"),
-                              //   fit: BoxFit.cover,
-                              // ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: 10, top: 10, left: 10, right: 10),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      boxShadow: null,
+                    ),
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: 60,
+                              width: 60,
+                              child: CircleAvatar(
+                                radius: 48, // Image radius
+                                backgroundImage: NetworkImage(
+                                    '${_playerModel![0]['image_path']}'),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        _playerModel![0]['fullname'],
-                                        overflow: TextOverflow.fade,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          _playerModel![0]['fullname'],
+                                          overflow: TextOverflow.fade,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.only(left: 16),
-                                      decoration: const BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(5))),
-                                      padding: const EdgeInsets.all(3),
-                                      child: Text(
-                                        _playerModel![0]['shirt_number'],
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 16),
+                                        decoration: const BoxDecoration(
+                                            color: Colors.black,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5))),
+                                        padding: const EdgeInsets.all(3),
+                                        child: Text(
+                                          _playerModel![0]['shirt_number'],
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text.rich(
-                                        softWrap: false,
-                                        overflow: TextOverflow.fade,
-                                        TextSpan(
-                                            text: 'Team: ',
-                                            style: const TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.grey),
-                                            children: <InlineSpan>[
-                                              TextSpan(
-                                                text: _teamModel![0]
-                                                        ['short_code']
-                                                    .toString(),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text.rich(
+                                          softWrap: false,
+                                          overflow: TextOverflow.fade,
+                                          TextSpan(
+                                              text: 'Team: ',
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.grey),
+                                              children: <InlineSpan>[
+                                                TextSpan(
+                                                  text: _teamModel![0]
+                                                          ['short_code']
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: Colors.black),
+                                                ),
+                                              ]),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 1,
+                                      ),
+                                      Expanded(
+                                        child: Text.rich(
+                                            softWrap: false,
+                                            overflow: TextOverflow.fade,
+                                            TextSpan(
+                                                text: 'League: ',
                                                 style: const TextStyle(
                                                     fontSize: 12,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.black),
-                                              ),
-                                            ]),
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.grey),
+                                                children: <InlineSpan>[
+                                                  TextSpan(
+                                                    text: _leagueModel![0]
+                                                            ['short_code']
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black),
+                                                  )
+                                                ])),
+                                      ),
+                                      const SizedBox(
+                                        width: 1,
+                                      ),
+                                      Expanded(
+                                        child: Text.rich(
+                                            softWrap: false,
+                                            overflow: TextOverflow.fade,
+                                            TextSpan(
+                                                text: 'Country: ',
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.grey),
+                                                children: <InlineSpan>[
+                                                  TextSpan(
+                                                    text: _countryModel![0]
+                                                            ['short_code']
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black),
+                                                  )
+                                                ])),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        const Divider(
+                          color: Colors.black,
+                          height: 20,
+                          thickness: 1,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Claim ID',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 4.0),
+                                    child: Text(
+                                      'widget.claimNumber',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 1,
-                                    ),
-                                    Expanded(
-                                      child: Text.rich(
-                                          softWrap: false,
-                                          overflow: TextOverflow.fade,
-                                          TextSpan(
-                                              text: 'League: ',
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.grey),
-                                              children: <InlineSpan>[
-                                                TextSpan(
-                                                  text: _leagueModel![0]
-                                                          ['short_code']
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: Colors.black),
-                                                )
-                                              ])),
-                                    ),
-                                    const SizedBox(
-                                      width: 1,
-                                    ),
-                                    Expanded(
-                                      child: Text.rich(
-                                          softWrap: false,
-                                          overflow: TextOverflow.fade,
-                                          TextSpan(
-                                              text: 'Country: ',
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.grey),
-                                              children: <InlineSpan>[
-                                                TextSpan(
-                                                  text: _countryModel![0]
-                                                          ['short_code']
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: Colors.black),
-                                                )
-                                              ])),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      const Divider(
-                        color: Colors.black,
-                        height: 20,
-                        thickness: 1,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Claim ID',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey,
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
-                                  child: Text(
-                                    'widget.claimNumber',
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Contract No.',
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Contract No.',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
-                                  child: Text(
-                                    'KP2207514735',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 4.0),
+                                    child: Text(
+                                      'KP2207514735',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 onRefresh: () {

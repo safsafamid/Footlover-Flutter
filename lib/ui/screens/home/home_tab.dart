@@ -1,16 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'package:soccerapp/core/api/api.dart';
 import 'package:soccerapp/core/controllers/home_controller.dart';
 import 'package:soccerapp/core/data/dummy_data.dart';
+import 'package:soccerapp/core/models/data/league_model.dart';
 import 'package:soccerapp/core/models/export_helper.dart';
 import 'package:soccerapp/gen/assets.gen.dart';
+import 'package:soccerapp/ui/screens/leagues/leagues_screen.dart';
 import 'package:soccerapp/ui/theme/app_theme.dart';
 import 'package:soccerapp/ui/theme/widgets/scroll_indicator.dart';
 import 'package:soccerapp/ui/theme/widgets/wigets.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
+
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  late List<League>? _leaguesModel = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
+  void _getData() async {
+    _leaguesModel = (await ApiService().getLeagues());
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +59,7 @@ class HomeTab extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'BRI Liga 1',
+                                'Foot Lover App',
                                 style: Get.textTheme.headline6?.copyWith(
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 1,
@@ -47,7 +68,7 @@ class HomeTab extends StatelessWidget {
                               ),
                               SizedBox(height: 3.h),
                               Text(
-                                'Soccer App',
+                                'Football App',
                                 style: Get.textTheme.bodyMedium?.copyWith(
                                   letterSpacing: 1,
                                   color: AppTheme.color.neutral.shade100,
@@ -87,18 +108,21 @@ class HomeTab extends StatelessWidget {
                                 enableAutoSlider: true,
                                 unlimitedMode: true,
                                 slideBuilder: (index) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: controller.colors[index],
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                    ),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      controller.letters[index],
-                                      style: const TextStyle(
-                                        fontSize: 100,
-                                        color: Colors.white,
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => LeagueScreen(
+                                            id: _leaguesModel![index].id,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      child: Image.network(
+                                        _leaguesModel![index].imagePath,
+                                        height: 70,
                                       ),
                                     ),
                                   );
@@ -109,7 +133,7 @@ class HomeTab extends StatelessWidget {
                                   indicatorRadius: 3,
                                   padding: const EdgeInsets.only(bottom: 8),
                                 ),
-                                itemCount: controller.colors.length),
+                                itemCount: _leaguesModel!.length),
                           ),
                           SizedBox(height: 20.h),
                           SizedBox(

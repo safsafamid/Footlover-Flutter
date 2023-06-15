@@ -5,9 +5,18 @@ class ApiConstants {
 
   static String playersEndpoint = '/api/players';
   static String playerEndpoint = '/api/players/';
+
+  static String teamsEndpoint = '/api/teams';
   static String teamEndpoint = '/api/teams/';
+  static String playersTeamEndpoint = '/players';
+
+  static String leaguesEndpoint = '/api/leagues';
   static String leagueEndpoint = '/api/leagues/';
+  static String teamsLeagueEndpoint = '/teams';
+
   static String countryEndpoint = '/api/countrys/';
+
+
   static String actEndpoint = '/Actualités';
   static String projectsEndpoint = '/Listing';
   static String projectDataEndpoint = '/Listing/detail';
