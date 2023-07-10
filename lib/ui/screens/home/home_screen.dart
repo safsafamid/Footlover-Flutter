@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:soccerapp/ui/screens/home/home_tab.dart';
+import 'package:soccerapp/ui/screens/login/login.dart';
 import 'package:soccerapp/ui/screens/matches/matches_screen.dart';
 import 'package:soccerapp/ui/theme/app_theme.dart';
 import 'package:soccerapp/ui/theme/widgets/bottom_navy_bar.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Widget> pages = [
       const HomeTab(),
       const MatchesScreen(),
-      Container(),
+      const LoginPage(),
     ];
 
     return WillPopScope(
