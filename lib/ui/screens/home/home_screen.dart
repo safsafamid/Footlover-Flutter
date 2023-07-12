@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavyBarItem(
               icon: const Icon(Iconsax.calendar_1),
               title: Text(
-                'Schedule',
+                'Schedules',
                 style: TextStyle(
                   letterSpacing: 0.5,
                   fontSize: 12.sp,
